@@ -23,11 +23,72 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  padding: 15px;
+  padding: 5px 15px;
   background: linear-gradient(to right, #9580ff, #8572e3, #8066ff);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+header > h1 {
+  letter-spacing: 3px;
+  flex: 1 1 100%;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInDown 0.6s ease forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#buttons {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+#buttons > button {
+  background: linear-gradient(to bottom, #f8faff, #dfeeff);
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-inner {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+#buttons > button:nth-child(2) .btn-inner {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#buttons > button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+#buttons > button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #github-link {
@@ -37,6 +98,21 @@ header {
   font-size: 24px;
   color: #f2f2ff;
   transition: all 0.3s ease;
+}
+
+span.link-animation {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: fadeInLeft 0.6s ease forwards;
+  animation-delay: 0.35s;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 #github-link:hover {
