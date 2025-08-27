@@ -8,6 +8,39 @@
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 150px 1fr 50px;
   line-height: 1.5;
+  font-family: "Merriweather", "Crimson Pro", sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(to right, #9580ff, #8572e3, #8066ff);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#github-link {
+  align-self: end;
+  font-family: "Crimson Pro", sans-serif;
+  text-decoration: none;
+  font-size: 24px;
+  color: #f2f2ff;
+  transition: all 0.3s ease;
+}
+
+#github-link:hover {
+  transform: scale(1.05);
+  color: whitesmoke;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
