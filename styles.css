@@ -120,3 +120,10 @@ span.link-animation {
   color: whitesmoke;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #9580ff, #8572e3, #8066ff);
+}
