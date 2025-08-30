@@ -126,4 +126,5 @@ footer {
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #9580ff, #8572e3, #8066ff);
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.3);
 }
