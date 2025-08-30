@@ -20,6 +20,10 @@ body {
   font-family: "Merriweather", "Crimson Pro", sans-serif;
 }
 
+.display-flex {
+  display: flex;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -121,10 +125,115 @@ span.link-animation {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  align-items: center;
+  padding: 40px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, #9580ff, #8572e3);
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.book-card button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffb3ff;
+  font-family: "Merriweather", sans-serif;
+  font-weight: 700;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #9580ff, #8572e3, #8066ff);
   box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#addBookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#addBookForm label[for="book-hasBeenRead"] {
+  padding-right: 10px;
+}
+
+#addBookForm input {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+#addBookForm input:focus {
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #8066ff;
+}
+
+.dialog-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dialog-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #9580ff;
+  font-family: "Merriweather", sans-serif;
+  font-weight: 700;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dialog-buttons button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, #ffb3ff, #ff99ff);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }
