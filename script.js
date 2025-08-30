@@ -64,7 +64,6 @@ function displayBooks(booksArray) {
     }
 
     let deleteBookBtn = document.createElement("button");
-    deleteBookBtn.className = "deleteSingleBook";
     deleteBookBtn.type = "button";
 
     let i = document.createElement("i");
@@ -73,6 +72,12 @@ function displayBooks(booksArray) {
     deleteBookBtn.appendChild(i);
 
     div.appendChild(deleteBookBtn);
+
+    deleteBookBtn.addEventListener("click", () => {
+      main.removeChild(div);
+
+      library = library.filter((b) => b.id !== book.id);
+    });
 
     main.appendChild(div);
   });
