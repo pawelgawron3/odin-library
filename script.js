@@ -4,6 +4,9 @@ const addBook = document.querySelector("#addBook");
 const suggestBook = document.querySelector("#suggestBook");
 const removeAllBooks = document.querySelector("#removeAllBooks");
 
+const suggestedBookDialog = document.querySelector("#suggestedBookDialog");
+const closeDialogBtn = document.querySelector("button#closeDialog");
+
 const dialog = document.querySelector("#addBookDialog");
 const bookForm = document.querySelector("#addBookForm");
 const formCancelBookBtn = dialog.querySelector("button#cancelDialog");
@@ -19,6 +22,12 @@ function Book(title, author, pages, hasBeenRead) {
     this.id = crypto.randomUUID();
   }
 }
+
+Book.prototype.changeReadStatus = function () {
+  let status = this.hasBeenRead;
+  this.hasBeenRead = status === "Yes" ? "No" : "Yes";
+  displayBooks(library);
+};
 
 function addBookToLibrary(title, author, pages, hasBeenRead) {
   let book = new Book(title, author, pages, hasBeenRead);
@@ -65,13 +74,25 @@ function displayBooks(booksArray) {
 
     let deleteBookBtn = document.createElement("button");
     deleteBookBtn.type = "button";
+    deleteBookBtn.title = "Delete this book";
 
-    let i = document.createElement("i");
-    i.className = "mdi mdi-delete";
+    let trashIcon = document.createElement("i");
+    trashIcon.className = "mdi mdi-delete";
 
-    deleteBookBtn.appendChild(i);
+    deleteBookBtn.appendChild(trashIcon);
 
     div.appendChild(deleteBookBtn);
+
+    let changeReadStatusBtn = document.createElement("button");
+    changeReadStatusBtn.type = "button";
+    changeReadStatusBtn.title = "Change the 'read' status";
+
+    let eyeIcon = document.createElement("i");
+    eyeIcon.className = "mdi mdi-eye-circle-outline";
+
+    changeReadStatusBtn.appendChild(eyeIcon);
+
+    div.appendChild(changeReadStatusBtn);
 
     deleteBookBtn.addEventListener("click", () => {
       main.removeChild(div);
@@ -79,9 +100,21 @@ function displayBooks(booksArray) {
       library = library.filter((b) => b.id !== book.id);
     });
 
+    changeReadStatusBtn.addEventListener("click", () => {
+      book.changeReadStatus();
+    });
+
     main.appendChild(div);
   });
 }
+
+suggestBook.addEventListener("click", () => {
+  suggestedBookDialog.showModal();
+});
+
+closeDialogBtn.addEventListener("click", () => {
+  suggestedBookDialog.close();
+});
 
 removeAllBooks.addEventListener("click", () => {
   library = [];
