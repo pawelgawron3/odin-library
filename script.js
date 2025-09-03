@@ -63,7 +63,13 @@ function displayBooks(booksArray) {
 
         case 3:
           p.className = "hasBeenRead";
-          p.textContent = `Read: ${book.hasBeenRead}`;
+          p.textContent = "Read: ";
+
+          let span = document.createElement("span");
+          span.textContent = book.hasBeenRead;
+          span.style.color = book.hasBeenRead === "Yes" ? "Green" : "Red";
+
+          p.appendChild(span);
           break;
       }
       div.appendChild(p);
