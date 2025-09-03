@@ -11,26 +11,23 @@ const dialog = document.querySelector("#addBookDialog");
 const bookForm = document.querySelector("#addBookForm");
 const formCancelBookBtn = dialog.querySelector("button#cancelDialog");
 
-function Book(title, author, pages, hasBeenRead) {
-  if (!new.target) {
-    throw console.error("Only with 'new' keyword!");
-  } else {
+class Book {
+  id = crypto.randomUUID();
+  constructor(title, author, pages, hasBeenRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.hasBeenRead = hasBeenRead ? "Yes" : "No";
-    this.id = crypto.randomUUID();
+  }
+
+  changeReadStatus() {
+    let status = this.hasBeenRead;
+    this.hasBeenRead = status === "Yes" ? "No" : "Yes";
+    displayBooks(library);
   }
 }
 
-Book.prototype.changeReadStatus = function () {
-  let status = this.hasBeenRead;
-  this.hasBeenRead = status === "Yes" ? "No" : "Yes";
-  displayBooks(library);
-};
-
-function addBookToLibrary(title, author, pages, hasBeenRead) {
-  let book = new Book(title, author, pages, hasBeenRead);
+function addBookToLibrary(book) {
   library.push(book);
 }
 
@@ -137,7 +134,9 @@ bookForm.addEventListener("submit", (e) => {
   let pages = dialog.querySelector("#book-pages").value;
   let hasBeenRead = dialog.querySelector("#book-hasBeenRead").checked;
 
-  addBookToLibrary(title, author, pages, hasBeenRead);
+  let book = new Book(title, author, pages, hasBeenRead);
+
+  addBookToLibrary(book);
   displayBooks(library);
   dialog.close();
   bookForm.reset();
